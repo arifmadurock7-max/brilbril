@@ -1,332 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ratu coffee</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lato:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Google Identity Services SDK -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-  </head>
-  <body>
-    <div class="main-bg"></div>
-    <!-- PANEL KIRI  -->
-    <div class="left">
-      <div class="left-content">
-        <div class="left-badge">
-          <span>✦ Ngopi Lebih Dekat, Lebih Mudah</span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID ARCHIVE | Modern Metal Wear</title>
+    
+    <!-- Menghubungkan ke file CSS -->
+    <link rel="stylesheet" href="stayle.css">
+    
+    <!-- Mengambil Font dari Google Fonts: Metal Mania, New Rocker, dan Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=New+Rocker&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- PRELOADER DIAGONAL SHARD SHATTER -->
+    <div id="preloader">
+        <div class="lightning-container">
+            <!--Bolt 1 Detailed with branches -->
+            <svg class="bolt b1" viewBox="0 0 100 300">
+                <path d="M50,0 L40,80 L60,120 L30,220 L50,300 M40,80 L20,110 M60,120 L80,150" fill="none" stroke="#fff" stroke-width="2"/>
+            </svg>
+            <!-- Bolt 2 -->
+            <svg class="bolt b2" viewBox="0 0 100 300">
+                <path d="M50,0 L70,100 L40,150 L60,250 M70,100 L90,130 M40,150 L20,180" fill="none" stroke="#fff" stroke-width="2"/>
+            </svg>
+            <!-- Bolt 3 -->
+            <svg class="bolt b3" viewBox="0 0 100 300">
+                <path d="M50,0 L30,90 L60,160 L40,300 M30,90 L10,120 M60,160 L80,190" fill="none" stroke="#fff" stroke-width="2"/>
+            </svg>
         </div>
-
-        <div class="left-title">
-          Welcome To<br />
-          <em>Ratu Coffee</em><br />
+        <div class="shard s1"></div>
+        <div class="shard s2"></div>
+        <div class="shard s3"></div>
+        <div class="shard s4"></div>
+        <div class="preloader-content">
+            <div class="logo-lightning-wrap">
+                <h2 class="preloader-logo">VOID ARCHIVE</h2>
+                <!-- Mini Arcs around logo -->
+                <svg class="mini-bolt mb1" viewBox="0 0 100 50"><path d="M0,25 L30,10 L50,40 L100,20" fill="none" stroke="#00f2ff" stroke-width="1"/></svg>
+                <svg class="mini-bolt mb2" viewBox="0 0 100 50"><path d="M0,20 L40,40 L60,10 L100,30" fill="none" stroke="#00f2ff" stroke-width="1"/></svg>
+            </div>
+            <div class="ekg-container">
+                <svg class="ekg-svg" viewBox="0 0 100 20">
+                    <polyline class="ekg-line" points="0,10 40,10 45,5 50,15 55,1 60,19 65,10 100,10"></polyline>
+                </svg>
+            </div>
         </div>
-        <p class="left-sub">
-          Masuk untuk menikmati pengalaman ngopi yang lebih personal. Temukan
-          menu favoritmu dan nikmati promo spesial hanya untuk member!
-        </p>
-      </div>
-
-      <!-- Tombol buka panel (hidden by default) -->
-      <button
-        class="btn-open-panel show"
-        id="openPanelBtn"
-        onclick="toggleRightPanel()"
-      >
-        <span>LOGIN</span>
-        <div class="icon-box">
-          <i class="fas fa-chevron-left"></i>
-        </div>
-      </button>
     </div>
 
-    <!--  PANEL KANAN -->
-    <div class="right panel-off" id="rightPanel">
-      <button class="btn-hide-panel" onclick="toggleRightPanel()">
-        <i class="fas fa-times"></i>
-      </button>
-      <!-- LOGIN FORM -->
-      <div id="login-form" class="auth-container active">
-        <div class="logo">
-          <div class="logo-icon"><i class="fas fa-coffee"></i></div>
-        </div>
-        <h2 class="form-heading">Selamat Datang</h2>
-        <p class="form-sub">Masukkan akun Anda untuk melanjutkan</p>
-
-        <!-- Pesan error/info -->
-        <div class="error" id="err">Email atau password salah. Coba lagi.</div>
-
-        <!-- Input email -->
-        <div class="field">
-          <label for="email">Nama atau Email</label>
-          <input
-            type="text"
-            id="email"
-            placeholder="Nama atau Email"
-            autocomplete="off"
-          />
-          <div
-            id="err-email"
-            style="
-              color: #e07070;
-              font-size: 11px;
-              margin-top: 5px;
-              display: none;
-            "
-          >
-            Nama pengguna atau email tidak ditemukan!
-          </div>
-        </div>
-
-        <!-- Input password -->
-        <div class="field">
-          <label for="pass">Password</label>
-          <div class="password-wrapper">
-            <input
-              type="password"
-              id="pass"
-              placeholder="Password"
-              autocomplete="new-password"
-            />
-            <button
-              type="button"
-              class="toggle-password"
-              onclick="togglePassword()"
-            >
-              <i class="fas fa-eye" id="toggleIcon"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Remember & forgot -->
-        <div class="row">
-          <label class="remember">
-            <input type="checkbox" checked /> Ingatlah aku
-          </label>
-          <div class="forgot" onclick="switchForm('forgot')">
-            Lupa kata sandi?
-          </div>
-        </div>
-
-        <!-- Tombol login -->
-        <button class="btn-primary" id="loginBtn" onclick="doLogin()">
-          Masuk
-        </button>
-
-        <!-- Tombol login sebagai tamu -->
-        <button
-          class="btn-secondary"
-          id="guestBtn"
-          onclick="guestLogin()"
-          style="margin-top: 6px; margin-bottom: 10px; width: 100%"
-        >
-          <i class="fas fa-user-secret" style="margin-right: 8px"></i> Masuk
-          sebagai Tamu
-        </button>
-
-        <div class="divider"><span>ATAU MASUK DENGAN</span></div>
-
-        <!-- Real Google Login Button -->
-        <div
-          id="googleBtnContainer"
-          style="display: flex; justify-content: center; margin-bottom: 10px"
-        >
-          <div id="googleBtn"></div>
-        </div>
-
-        <!-- Buat akun -->
-        <p class="signup" style="margin-top: 10px; margin-bottom: 10px">
-          Belum punya akun?
-          <a href="#" onclick="switchForm('register')">Buat akun</a>
-        </p>
-      </div>
-
-      <!-- FORGOT PASSWORD FORM -->
-      <div id="forgot-form" class="auth-container">
-        <div class="logo">
-          <div class="logo-icon">☕</div>
-        </div>
-
-        <h2 class="form-heading">Reset Password</h2>
-        <p class="form-sub">
-          Masukkan alamat email Anda dan kami akan mengirimkan tautan untuk
-          mengatur ulang kata sandi Anda.
-        </p>
-
-        <div class="error" id="err-forgot"></div>
-
-        <div class="field">
-          <label for="forgot-email">Email Address</label>
-          <input
-            type="email"
-            id="forgot-email"
-            placeholder="Masukkan Email Anda"
-            oninput="checkEmail('forgot-email', 'err-forgot-email')"
-          />
-          <div
-            id="err-forgot-email"
-            style="
-              color: #e07070;
-              font-size: 11px;
-              margin-top: 5px;
-              display: none;
-            "
-          >
-            Format email tidak valid!
-          </div>
-        </div>
-
-        <button class="btn-primary" onclick="handleReset()">
-          Kirim Tautan
-        </button>
-
-        <button class="btn-secondary" onclick="switchForm('login')">
-          Kembali ke Halaman Login
-        </button>
-      </div>
-
-      <!-- REGISTER FORM -->
-      <div id="register-form" class="auth-container">
-        <div class="logo">
-          <div class="logo-icon">☕</div>
-        </div>
-
-        <h2 class="form-heading">Buat Akun</h2>
-        <p class="form-sub"></p>
-
-        <div class="error" id="err-register"></div>
-
-        <div class="field">
-          <label for="reg-name">Nama Lengkap</label>
-          <input type="text" id="reg-name" placeholder="Masukan Nama Anda" />
-        </div>
-
-        <div class="field">
-          <label for="reg-email">Email Address</label>
-          <input
-            type="email"
-            id="reg-email"
-            placeholder="Masukan Email Anda"
-            oninput="checkEmail('reg-email', 'err-reg-email')"
-          />
-          <div
-            id="err-reg-email"
-            style="
-              color: #e07070;
-              font-size: 11px;
-              margin-top: 5px;
-              display: none;
-            "
-          >
-            Format email tidak valid!
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="reg-pass">Password</label>
-          <input
-            type="password"
-            id="reg-pass"
-            placeholder="Masukan Password Anda"
-          />
-        </div>
-
-        <button class="btn-primary" onclick="handleRegister()">Daftar</button>
-
-        <button class="btn-secondary" onclick="switchForm('login')">
-          Sudah punya akun? Masuk
-        </button>
-      </div>
+    <!-- EFEK PETIR & DARAH -->
+    <div class="lightning-flash"></div>
+    <div class="blood-screen"></div>
+    <div class="blood-drip-container">
+        <div class="drip"></div>
+        <div class="drip"></div>
+        <div class="drip"></div>
+        <div class="drip"></div>
+        <div class="drip"></div>
     </div>
 
-    <!-- JS di file terpisah -->
-    <!-- SOCIAL LOGIN MODAL -->
-    <div id="socialModal" class="social-modal-overlay">
-      <!-- Loading State (Hidden initially) -->
-      <div id="socialLoading" class="social-loading" style="display: none">
-        <div class="spinner"></div>
-        <p>Menghubungkan...</p>
-      </div>
+    <!-- Filter SVG untuk membuat efek cairan kental -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+    </svg>
 
-      <!-- Account Selection State -->
-      <div id="socialContent" class="social-modal-content">
-        <div class="social-modal-header">
-          <div id="social-brand-icon" style="margin-bottom: 15px"></div>
-          <h3
-            id="social-modal-title"
-            style="
-              font-family: &quot;Roboto&quot;, sans-serif;
-              font-weight: 400;
-            "
-          >
-            Pilih Akun
-          </h3>
-          <p id="social-modal-sub">
-            untuk melanjutkan ke <strong>Ratu Coffee</strong>
-          </p>
+    <!-- NAVIGASI (Menu Atas) -->
+    <nav>
+        <div class="logo-lightning-wrap-nav">
+            <div class="logo">VOID ARCHIVE</div>
+            <!-- High-Detail Bolts for Nav Logo -->
+            <svg class="mini-bolt-nav n1" viewBox="0 0 100 200">
+                <path d="M50,0 L40,60 L60,90 L30,160 L50,200 M40,60 L20,80 M60,90 L80,110" fill="none" stroke="#fff" stroke-width="2"/>
+            </svg>
+            <svg class="mini-bolt-nav n2" viewBox="0 0 100 200">
+                <path d="M50,0 L70,80 L40,110 L60,200 M70,80 L90,100 M40,110 L20,130" fill="none" stroke="#fff" stroke-width="2"/>
+            </svg>
         </div>
-        <div class="account-list">
-          <div
-            class="account-item"
-            onclick="selectAccount('Arif Madu', 'arifmadu@gmail.com')"
-          >
-            <div class="acc-avatar">A</div>
-            <div class="acc-info">
-              <div class="acc-name">Arif Madu</div>
-              <div class="acc-email">arifmadu@gmail.com</div>
+        <ul class="nav-links">
+            <li><a href="#">COLLECTIONS</a></li>
+            <li><a href="#">CONTACT ME</a></li>
+            <li><a href="#">SHOP</a></li>
+        </ul>
+    </nav>
+
+    <!-- KONTEN UTAMA (Tulisan di Tengah) -->
+    <main>
+        <div class="hero-title">
+            <div class="logo-main-wrapper" style="position: relative; width: fit-content;">
+                <div class="lightning-horizontal-container">
+                    <!-- High-Detail Horizontal White Bolts (Storm Style) -->
+                    <svg class="bolt-h h1" viewBox="0 0 800 200">
+                        <path d="M0,100 L200,40 L350,140 L500,60 L650,160 L800,100 M200,40 L240,10 M500,60 L540,90 M350,140 L310,180" fill="none" stroke="#fff" stroke-width="3"/>
+                    </svg>
+                    <svg class="bolt-h h2" viewBox="0 0 800 200">
+                        <path d="M0,120 L150,160 L400,40 L550,130 L800,70 M150,160 L190,190 M400,40 L360,10 M550,130 L590,160" fill="none" stroke="#fff" stroke-width="3"/>
+                    </svg>
+                </div>
+                <h1>
+                    <span class="void">VOID</span>
+                    <span class="archive">ARCHIVE</span>
+                </h1>
             </div>
-            <i
-              class="fas fa-chevron-right"
-              style="margin-left: auto; font-size: 12px; color: #ccc"
-            ></i>
-          </div>
-          <div
-            class="account-item"
-            onclick="selectAccount('Kaydenn', 'kaydenn.dev@apple.com')"
-          >
-            <div class="acc-avatar" style="background: #5f6368">K</div>
-            <div class="acc-info">
-              <div class="acc-name">Kaydenn</div>
-              <div class="acc-email">kaydenn.dev@apple.com</div>
-            </div>
-            <i
-              class="fas fa-chevron-right"
-              style="margin-left: auto; font-size: 12px; color: #ccc"
-            ></i>
-          </div>
-          <div class="account-item" onclick="closeSocialModal()">
-            <div
-              class="acc-avatar"
-              style="background: #fff; border: 1px solid #ddd; color: #5f6368"
-            >
-              <i class="fas fa-user-plus" style="font-size: 12px"></i>
-            </div>
-            <div class="acc-info">
-              <div class="acc-name" style="color: #5f6368">
-                Gunakan akun lain
-              </div>
-            </div>
-          </div>
+            <p class="sub-title">VOID ARCHIVE ADALAH MONUMEN BAGI MEREKA YANG TELAH HAMPA ATAU SEBUAH ARSIP ABADI DIMANA KEKOSONGAN JIWAMU AKHIRNYA MENEMUKAN BENTUKNYA</p>
+            <button class="btn-main">EXPLORE DROP 01</button>
         </div>
-        <div class="social-modal-footer-info">
-          Untuk melanjutkan, Google akan membagikan nama, alamat email,
-          preferensi bahasa, dan foto profil Anda dengan Ratu Coffee.
+    </main>
+
+    <!-- BACKGROUND SYSTEM (Layar Terbelah) -->
+    <div class="split-bg">
+        <!-- Sisi Kiri: Foto -->
+        <div class="left-photo">
+            <div class="overlay"></div> <!-- Lapisan gelap agar tulisan mudah dibaca -->
         </div>
-        <div class="social-modal-footer">
-          <button class="btn-cancel" onclick="closeSocialModal()">Batal</button>
+        
+        <!-- Sisi Kanan: Video -->
+        <div class="right-video">
+            <video src="Video/snaptik_7110266423062138117_hd.mp4" autoplay loop muted></video>
+            <div class="overlay"></div> <!-- Lapisan gelap agar tulisan mudah dibaca -->
         </div>
-      </div>
     </div>
 
-    <script type="module" src="script.js"></script>
-  </body>
+    <div class="cursor"></div>
+
+    <script src="script.js"></script>
+</body>
 </html>
